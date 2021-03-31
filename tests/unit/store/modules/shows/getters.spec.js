@@ -1,4 +1,4 @@
-import getters from "../../src/store/modules/shows/getters.js";
+import getters from "../../../../../src/store/modules/shows/getters.js";
 
 describe("shows", () => {
   it("should return all shows", () => {

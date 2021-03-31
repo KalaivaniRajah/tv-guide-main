@@ -49,6 +49,7 @@ button:hover,
 button:active {
   background-color: #270041;
   border-color: #270041;
+  text-decoration: none;
 }
 
 .flat {

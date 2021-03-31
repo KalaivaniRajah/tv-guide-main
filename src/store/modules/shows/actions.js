@@ -10,7 +10,7 @@ export default {
       .then(function (responseData) {
         for (const id in responseData) {
           const object = {
-            id: id,
+            id: responseData[id].id,
             name: responseData[id].name,
             image: responseData[id].image.medium,
             network: responseData[id].network
@@ -25,6 +25,9 @@ export default {
           };
           shows.push(object);
         }
+        shows.sort(function (a, b) {
+          return b.rating - a.rating;
+        });
         context.commit("setShows", shows);
       });
   },
@@ -34,9 +37,12 @@ export default {
       .then(function (response) {
         if (response.ok) {
           return response.json();
-        } else console.log("Error");
+        }
       })
       .then(function (responseData) {
+        responseData.sort(function (a, b) {
+          return b.rating.average - a.rating.average;
+        });
         for (const id in responseData) {
           if (
             responseData[id].genres[0] === "Comedy" &&
@@ -44,7 +50,7 @@ export default {
             responseData[id].rating.average > 8.0
           ) {
             const object = {
-              id: id,
+              num: responseData[id].id,
               name: responseData[id].name,
               image: responseData[id].image.medium,
               network: responseData[id].network
@@ -69,9 +75,12 @@ export default {
       .then(function (response) {
         if (response.ok) {
           return response.json();
-        } else console.log("Error");
+        }
       })
       .then(function (responseData) {
+        responseData.sort(function (a, b) {
+          return b.rating.average - a.rating.average;
+        });
         for (const id in responseData) {
           if (
             responseData[id].genres[0] === "Drama" &&
@@ -79,7 +88,7 @@ export default {
             responseData[id].rating.average > 8.0
           ) {
             const object = {
-              id: id,
+              num: responseData[id].id,
               name: responseData[id].name,
               image: responseData[id].image.medium,
               network: responseData[id].network
@@ -104,9 +113,12 @@ export default {
       .then(function (response) {
         if (response.ok) {
           return response.json();
-        } else console.log("Error");
+        }
       })
       .then(function (responseData) {
+        responseData.sort(function (a, b) {
+          return b.rating.average - a.rating.average;
+        });
         for (const id in responseData) {
           if (
             responseData[id].genres[0] === "Action" &&
@@ -114,7 +126,7 @@ export default {
             responseData[id].rating.average > 8.0
           ) {
             const object = {
-              id: id,
+              num: responseData[id].id,
               name: responseData[id].name,
               image: responseData[id].image.medium,
               network: responseData[id].network

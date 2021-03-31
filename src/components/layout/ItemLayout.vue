@@ -11,6 +11,5 @@ div {
   padding: 1rem;
   margin: 2rem auto;
   max-width: 400px;
-  height: 275px;
 }
 </style>

@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
-import ShowItem from "../../src/views/shows/ShowItem.vue";
-import ButtonLayout from "../../src/components/layout/ButtonLayout.vue";
+import ShowItem from "../../../../src/views/shows/ShowItem.vue";
+import ButtonLayout from "../../../../src/components/layout/ButtonLayout.vue";
 
 describe("ShowItem", () => {
   let wrapper;
@@ -22,7 +22,7 @@ describe("ShowItem", () => {
     });
     expect(
       ShowItem.computed.displayShowDetails.bind(wrapper1.vm).call()
-    ).toContain("/showdetails/8");
+    ).toContain("/showdetails/");
   });
 });
 test("props", () => {

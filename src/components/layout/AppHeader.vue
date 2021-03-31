@@ -12,15 +12,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="form-inline ml-auto">
-          <input
-            id="userInput"
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
+          <div class="container">
+            <div class="row input-row">
+              <input
+                id="userInput"
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                v-model="inputField"
+              />
+            </div>
+            <div class="row" style="padding: 0px; margin: 0px; height: 0px">
+              <div
+                class="invalid-feedback"
+                style="visibility: hidden; margin-top: 0px; height: 5px"
+              >
+                Enter a valid Show name!
+              </div>
+            </div>
+          </div>
           <li>
-            <button-layout @click="findShow">Search</button-layout>
+            <button-layout id="searchButton" @click="findShow"
+              >Search
+            </button-layout>
           </li>
         </ul>
       </div>
@@ -29,21 +44,43 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ButtonLayout from "./ButtonLayout.vue";
 export default {
   components: { ButtonLayout },
   data() {
     return {
       searchedShow: null,
+      inputField: "",
+      allShows: [],
     };
+  },
+  computed: {
+    ...mapGetters({
+      topShows: "shows/shows",
+    }),
   },
   methods: {
     findShow() {
-      if (document.getElementById("userInput").value) {
-        this.searchedShow = this.$store.getters["shows/shows"].find(
-          (show) => show.name === document.getElementById("userInput").value
-        );
-        this.$router.push("/showdetails/" + this.searchedShow.id);
+      this.allShows = this.topShows;
+      if (this.inputField) {
+        this.searchedShow = this.allShows.find((show) => {
+          return show.name.toLowerCase() === this.inputField.toLowerCase();
+        });
+        if (this.searchedShow) {
+          document.getElementsByClassName(
+            "invalid-feedback"
+          )[0].style.visibility = "hidden";
+          this.$router.push("/showdetails/" + this.searchedShow.id);
+        } else {
+          document.getElementsByClassName(
+            "invalid-feedback"
+          )[0].style.visibility = "visible";
+        }
+      } else {
+        document.getElementsByClassName(
+          "invalid-feedback"
+        )[0].style.visibility = "visible";
       }
     },
   },
@@ -99,5 +136,10 @@ div ul {
 li,
 input {
   margin: 0 0.5rem;
+}
+
+.input-row {
+  margin: 10px;
+  height: 20px;
 }
 </style>

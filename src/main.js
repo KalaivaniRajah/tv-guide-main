@@ -6,6 +6,7 @@ import ItemLayout from "./components/layout/ItemLayout.vue";
 import ButtonLayout from "./components/layout/ButtonLayout.vue";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "jquery";
 
 const app = createApp(App);
 app.use(store).use(router);

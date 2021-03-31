@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import ShowList from "../../src/views/shows/ShowList.vue";
+import ShowList from "../../../../src/views/shows/ShowList.vue";
 
 describe("ShowList", () => {
   let wrapper;

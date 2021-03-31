@@ -1,4 +1,4 @@
-import mutations from "../../src/store/modules/shows/mutations.js";
+import mutations from "../../../../../src/store/modules/shows/mutations.js";
 
 describe("setShows", () => {
   it("should set shows and save them to store", () => {
