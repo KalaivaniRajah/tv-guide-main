@@ -49,8 +49,15 @@ npm run lint
 Node.js is required as the libraries required for Vue are downloaded using node package manager (npm).
 
 ### Install Vue CLI
+For Vue 3, you should use Vue CLI v4.5 available on npm as @vue/cli. To upgrade, you need to reinstall the latest version of @vue/cli globally,
+
 ```
 npm install -g @vue/cli
+```
+
+Then in the Vue projects, run
+```
+vue upgrade --next
 ```
 
 ## Naming Conventions
