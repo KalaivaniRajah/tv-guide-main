@@ -74,9 +74,7 @@ export default {
   },
   methods: {
     title() {
-      this.selectedShow = this.topShows.find((show) => {
-        return show.id + "" === this.num + "";
-      });
+      return this.selectedShow.name;
     },
     genre() {
       return this.selectedShow.genre;
@@ -107,10 +105,12 @@ export default {
     },
   },
   created() {
-    console.log(this.num);
     this.selectedShow = this.topShows.find((show) => {
       return show.id + "" === this.num + "";
     });
+    if (this.selectedShow === undefined || this.selectedShow === null) {
+      this.$router.push("/home");
+    }
   },
 };
 </script>
