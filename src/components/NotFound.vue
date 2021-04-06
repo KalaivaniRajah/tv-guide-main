@@ -2,9 +2,7 @@
   <div class="demo-alert-box">
     <strong>Error!</strong>
     <div id="slots-demo" class="demo">
-      <alert-box>
-        Something bad happened.
-      </alert-box>
+      <alert-box> Something bad happened. </alert-box>
     </div>
   </div>
 </template>
